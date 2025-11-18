@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع قيمنا حياة - التسامح يجمعنا</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .gold-particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #D4AF37;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px #D4AF37); }
+            50% { filter: drop-shadow(0 0 20px #FFD700); }
+        }
+
+        .lang-toggle {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #000000;
+            border: none;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-toggle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .lang-toggle:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 12px 35px;
+            background: rgba(26, 26, 26, 0.9);
+            border: 2px solid #D4AF37;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            color: #D4AF37;
+            animation: slideInLeft 1s ease;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        h1 {
+            font-size: 72px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            animation: slideInRight 1s ease;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .gold-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+            100% { background-position: 0% center; }
+        }
+
+        .subtitle {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 1px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px;
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            animation: fadeInUp 1s ease;
+            animation-fill-mode: both;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #D4AF37;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 900;
+            color: #D4AF37;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 52px;
+            font-weight: 900;
+            margin-bottom: 70px;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease;
+            animation-fill-mode: both;
+        }
+
+        .value-card:nth-child(1) { animation-delay: 0.2s; }
+        .value-card:nth-child(2) { animation-delay: 0.3s; }
+        .value-card:nth-child(3) { animation-delay: 0.4s; }
+        .value-card:nth-child(4) { animation-delay: 0.5s; }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #D4AF37, #FFD700, #D4AF37);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            border-radius: 50%;
+        }
+
+        .value-card:hover::after {
+            width: 500px;
+            height: 500px;
+        }
+
+        .value-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            border-color: #D4AF37;
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.3);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .value-card:hover .value-icon {
+            transform: rotateY(360deg) scale(1.1);
+        }
+
+        .value-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #D4AF37;
+            position: relative;
+            z-index: 10;
+        }
+
+        .value-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Detailed Info Section */
+        .detailed-info {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+        }
+
+        .info-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .info-block {
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 25px;
+            padding: 50px;
+            transition: all 0.5s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .info-block:hover {
+            transform: translateY(-10px);
+            border-color: #D4AF37;
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+        }
+
+        .info-block h3 {
+            font-size: 32px;
+            color: #D4AF37;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .info-block p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+
+        .info-block ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-block ul li {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+            padding-right: 30px;
+            position: relative;
+        }
+
+        .info-block ul li::before {
+            content: '◆';
+            position: absolute;
+            right: 0;
+            color: #D4AF37;
+            font-size: 12px;
+        }
+
+        /* Concept Map */
+        .concept-map {
+            background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
+            border: 3px solid #D4AF37;
+            border-radius: 30px;
+            padding: 70px;
+            margin: 100px 0;
+            position: relative;
+            animation: fadeIn 1s ease;
+            box-shadow: 0 0 100px rgba(212, 175, 55, 0.2);
+        }
+
+        .map-center {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .central-node {
+            display: inline-block;
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 80px rgba(212, 175, 55, 0.5);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                transform: scale(1); 
+                box-shadow: 0 0 80px rgba(212, 175, 55, 0.5);
+            }
+            50% { 
+                transform: scale(1.05); 
+                box-shadow: 0 0 120px rgba(212, 175, 55, 0.8);
+            }
+        }
+
+        .central-node-inner {
+            width: 250px;
+            height: 250px;
+            background: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 900;
+            position: relative;
+            z-index: 10;
+        }
+
+        .connected-nodes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .node {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid #D4AF37;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease;
+        }
+
+        .node::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .node:hover::before {
+            animation: shine 1.5s ease infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .node:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .node-icon {
+            font-size: 52px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .node-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .node-desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #D4AF37, #FFD700, #D4AF37);
+        }
+
+        .timeline-item {
+            margin-bottom: 60px;
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+
+        .timeline-item:nth-child(odd) {
+            text-align: left;
+            padding-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            text-align: right;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .timeline-content:hover {
+            border-color: #D4AF37;
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .timeline-content h4 {
+            font-size: 26px;
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .timeline-content p {
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            right: calc(50% - 15px);
+            width: 30px;
+            height: 30px;
+            background: #D4AF37;
+            border-radius: 50%;
+            border: 5px solid #000;
+            animation: pulse 2s ease infinite;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(0, 0, 0, 0.8) 100%);
+            text-align: center;
+        }
+
+        .quote-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px;
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid #D4AF37;
+            border-radius: 30px;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        .quote-icon {
+            font-size: 80px;
+            color: #D4AF37;
+            opacity: 0.3;
+            margin-bottom: 20px;
+        }
+
+        .quote-text {
+            font-size: 32px;
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-size: 20px;
+            color: #D4AF37;
+            font-weight: 600;
+        }
+
+        /* Project Info */
+        .project-info {
+            background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
+            border: 3px solid #D4AF37;
+            border-radius: 30px;
+            padding: 70px;
+            margin: 100px 0;
+            text-align: center;
+            animation: fadeIn 1s ease;
+            box-shadow: 0 0 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #000000;
+            padding: 25px 60px;
+            border-radius: 20px;
+            font-size: 36px;
+            font-weight: 900;
+            margin: 30px 0;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .info-card {
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: right;
+            transition: all 0.5s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            border-color: #D4AF37;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .info-label {
+            font-size: 16px;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%);
+            border: 3px solid #D4AF37;
+            border-radius: 30px;
+            padding: 70px;
+            margin: 100px 0;
+            text-align: center;
+            animation: fadeIn 1s ease;
+            box-shadow: 0 0 80px rgba(212, 175, 55, 0.2);
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid #D4AF37;
+            padding: 25px 50px;
+            border-radius: 20px;
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+            transition: all 0.5s ease;
+            margin-top: 30px;
+        }
+
+        .email-link:hover {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #000000;
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gold-line {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #D4AF37, #FFD700, #D4AF37, transparent);
+            margin: 60px 0;
+            animation: shimmer 3s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        body.en {
+            direction: ltr;
+        }
+
+        body.en .info-card,
+        body.en .timeline-item:nth-child(odd) {
+            text-align: left;
+        }
+
+        body.en .timeline-item:nth-child(even) {
+            text-align: right;
+        }
+
+        body.en header {
+            direction: ltr;
+        }
+
+        body.en .info-block ul li {
+            padding-right: 0;
+            padding-left: 30px;
+        }
+
+        body.en .info-block ul li::before {
+            right: auto;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .container {
+                padding: 0 15px;
+                max-width: 100%;
+            }
+
+            h1 { 
+                font-size: 36px;
+                word-wrap: break-word;
+            }
+            
+            .subtitle { 
+                font-size: 20px;
+                word-wrap: break-word;
+            }
+            
+            .section-title { 
+                font-size: 32px;
+                word-wrap: break-word;
+            }
+
+            .logo {
+                font-size: 18px;
+                max-width: 60%;
+            }
+
+            .lang-toggle {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .badge {
+                font-size: 12px;
+                padding: 8px 20px;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .values-grid, 
+            .connected-nodes, 
+            .info-cards, 
+            .info-container,
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .value-card,
+            .info-block,
+            .node {
+                padding: 25px;
+            }
+
+            .value-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+
+            .value-title,
+            .node-title {
+                font-size: 20px;
+            }
+
+            .value-desc,
+            .node-desc {
+                font-size: 15px;
+            }
+
+            .concept-map, 
+            .project-info, 
+            .contact-section,
+            .quote-container {
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+
+            .central-node {
+                width: 200px;
+                height: 200px;
+            }
+
+            .central-node-inner {
+                width: 180px;
+                height: 180px;
+                font-size: 26px;
+            }
+
+            .project-badge {
+                font-size: 24px;
+                padding: 20px 40px;
+            }
+
+            .info-card {
+                padding: 25px;
+            }
+
+            .info-value {
+                font-size: 22px;
+                word-wrap: break-word;
+            }
+
+            .email-link {
+                font-size: 16px;
+                padding: 20px 25px;
+                flex-wrap: wrap;
+                justify-content: center;
+                word-break: break-all;
+            }
+
+            .timeline::before { 
+                right: 20px; 
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 60px;
+                text-align: right;
+            }
+            
+            .timeline-dot { 
+                right: 5px; 
+            }
+
+            .timeline-content {
+                padding: 25px;
+            }
+
+            .timeline-content h4 {
+                font-size: 20px;
+            }
+
+            .timeline-content p {
+                font-size: 15px;
+            }
+
+            .quote-text { 
+                font-size: 20px;
+            }
+
+            .quote-author {
+                font-size: 16px;
+            }
+
+            .info-block h3 {
+                font-size: 24px;
+            }
+
+            .info-block p,
+            .info-block ul li {
+                font-size: 15px;
+            }
+
+            .stat-number {
+                font-size: 42px;
+            }
+
+            .stat-label {
+                font-size: 16px;
+            }
+
+            .node-icon {
+                font-size: 40px;
+            }
+
+            body.en .timeline-item:nth-child(odd),
+            body.en .timeline-item:nth-child(even) {
+                padding: 0 0 0 60px;
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg" id="particleContainer"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" id="logoText">مشروع قيمنا حياة</div>
+                <button class="lang-toggle" onclick="toggleLanguage()">
+                    <span id="langBtn">English</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge" id="mainTopic">التسامح والتعايش</div>
+                <h1><span id="projectTitle">مشروع قيمنا حياة</span></h1>
+                <h2 class="subtitle" id="subtitle">التسامح يجمعنا</h2>
+                <h1 class="gold-text" id="heroTitle">أنا مسامح</h1>
+                <p class="subtitle" id="heroDesc">رحلة نحو التسامح والتعايش السلمي</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label" id="stat1">الالتزام بالتسامح</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label" id="stat2">قيمة إنسانية</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label" id="stat3">مجتمع موحد</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">195</span>
+                    <span class="stat-label" id="stat4">دولة في العالم</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title"><span class="gold-text" id="valuesTitle">قيم التسامح الأساسية</span></h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3 class="value-title" id="value1Title">المحبة والإخاء</h3>
+                    <p class="value-desc" id="value1Desc">نشر المحبة والود بين الناس وبناء علاقات إنسانية قوية تقوم على الاحترام المتبادل والتقدير، حيث يصبح المجتمع أسرة واحدة متماسكة</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title" id="value2Title">التعايش السلمي</h3>
+                    <p class="value-desc" id="value2Desc">العيش المشترك باحترام وتقدير رغم الاختلافات الثقافية والدينية والفكرية، مع الحفاظ على الهوية والخصوصية لكل فرد في المجتمع</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3 class="value-title" id="value3Title">التواصل الحضاري</h3>
+                    <p class="value-desc" id="value3Desc">التواصل الحضاري بين الثقافات والشعوب المختلفة لتبادل الخبرات والمعارف، وبناء جسور من التفاهم تعزز السلام العالمي</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">☮️</div>
+                    <h3 class="value-title" id="value4Title">السلام والأمن</h3>
+                    <p class="value-desc" id="value4Desc">بناء مجتمع سلمي متسامح يسوده الأمن والاستقرار، حيث يعيش الجميع في أمان وطمأنينة دون خوف أو قلق من التمييز</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Detailed Info Section -->
+    <section class="detailed-info">
+        <div class="container">
+            <h2 class="section-title"><span class="gold-text" id="detailTitle">ماهية التسامح</span></h2>
+            <div class="info-container">
+                <div class="info-block">
+                    <h3 id="info1Title">تعريف التسامح</h3>
+                    <p id="info1Text">التسامح هو قيمة إنسانية عظيمة تعني القدرة على قبول الآخرين واحترام اختلافاتهم، والتعامل معهم بروح من المحبة والعفو. إنه الأساس الذي يُبنى عليه المجتمع المتماسك والمتحضر.</p>
+                    <ul>
+                        <li id="info1Item1">احترام حقوق الآخرين وكرامتهم الإنسانية</li>
+                        <li id="info1Item2">قبول التنوع الثقافي والفكري</li>
+                        <li id="info1Item3">نبذ العنف والتطرف بكافة أشكاله</li>
+                        <li id="info1Item4">التعاون من أجل الصالح العام</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h3 id="info2Title">أهمية التسامح</h3>
+                    <p id="info2Text">يشكل التسامح ركيزة أساسية في بناء المجتمعات الحديثة، فهو يعزز الاستقرار الاجتماعي ويقوي أواصر الترابط بين أفراد المجتمع، ويساهم في تحقيق التنمية الشاملة.</p>
+                    <ul>
+                        <li id="info2Item1">تعزيز السلام الاجتماعي والاستقرار</li>
+                        <li id="info2Item2">بناء جسور التواصل بين الثقافات</li>
+                        <li id="info2Item3">تحقيق العدالة والمساواة</li>
+                        <li id="info2Item4">دعم التنمية المستدامة</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h3 id="info3Title">مظاهر التسامح</h3>
+                    <p id="info3Text">يتجلى التسامح في سلوكياتنا اليومية وتعاملاتنا مع الآخرين، من خلال احترام الرأي الآخر والعفو عند المقدرة، والتعاون على البر والخير.</p>
+                    <ul>
+                        <li id="info3Item1">التعامل بالحسنى مع جميع الناس</li>
+                        <li id="info3Item2">الإنصاف والعدل في التعامل</li>
+                        <li id="info3Item3">الحوار البناء والنقاش الهادف</li>
+                        <li id="info3Item4">العفو والصفح عن الأخطاء</li>
+                    </ul>
+                </div>
+                <div class="info-block">
+                    <h3 id="info4Title">ثمار التسامح</h3>
+                    <p id="info4Text">ينعكس التسامح إيجابياً على الفرد والمجتمع، حيث يخلق بيئة صحية للنمو والازدهار، ويساهم في تحقيق السعادة والرفاهية للجميع.</p>
+                    <ul>
+                        <li id="info4Item1">مجتمع قوي متماسك</li>
+                        <li id="info4Item2">علاقات إنسانية متينة</li>
+                        <li id="info4Item3">تقدم وازدهار مستدام</li>
+                        <li id="info4Item4">سلام نفسي وطمأنينة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Concept Map -->
+    <section>
+        <div class="container">
+            <div class="concept-map">
+                <h2 class="section-title" style="margin-bottom: 50px;">
+                    <span class="gold-text" id="mapTitle">خريطة مفاهيم التسامح</span>
+                </h2>
+                <div class="map-center">
+                    <div class="central-node">
+                        <div class="central-node-inner">
+                            <span id="centralNode">أنا مسامح</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="connected-nodes">
+                    <div class="node">
+                        <div class="node-icon">🏆</div>
+                        <h4 class="node-title" id="node1Title">سفراء حقوق الإنسان</h4>
+                        <p class="node-desc" id="node1Desc">نؤمن بحقوق الإنسان الأساسية وكرامته، ونعمل على نشر ثقافة احترام الحقوق والحريات في المجتمع</p>
+                    </div>
+                    <div class="node">
+                        <div class="node-icon">🤲</div>
+                        <h4 class="node-title" id="node2Title">التسامح يجمعنا</h4>
+                        <p class="node-desc" id="node2Desc">التسامح هو الجسر الذي يوحد القلوب ويزيل الحواجز بين الناس، فبه نصنع مستقبلاً أفضل للأجيال القادمة</p>
+                    </div>
+                    <div class="node">
+                        <div class="node-icon">🌟</div>
+                        <h4 class="node-title" id="node3Title">التواصل الحضاري</h4>
+                        <p class="node-desc" id="node3Desc">جسور من التفاهم بين مختلف الحضارات والثقافات، نتعلم من بعضنا ونثري معارفنا الإنسانية</p>
+                    </div>
+                    <div class="node">
+                        <div class="node-icon">💫</div>
+                        <h4 class="node-title" id="node4Title">قبول الآخر</h4>
+                        <p class="node-desc" id="node4Desc">احترام التنوع والاختلاف، والإيمان بأن الاختلاف رحمة وثراء للمجتمع الإنساني</p>
+                    </div>
+                    <div class="node">
+                        <div class="node-icon">🕊️</div>
+                        <h4 class="node-title" id="node5Title">العفو والتصالح</h4>
+                        <p class="node-desc" id="node5Desc">القدرة على العفو والصفح، وتجاوز الخلافات لبناء علاقات قوية ومستدامة</p>
+                    </div>
+                    <div class="node">
+                        <div class="node-icon">🌟</div>
+                        <h4 class="node-title" id="node6Title">التعددية الثقافية</h4>
+                        <p class="node-desc" id="node6Desc">الاحتفاء بالتنوع الثقافي والاستفادة من مختلف الخبرات والتجارب الإنسانية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title"><span class="gold-text" id="timelineTitle">مراحل بناء التسامح</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 id="timeline1Title">المرحلة الأولى: الوعي الذاتي</h4>
+                        <p id="timeline1Desc">فهم الذات والتعرف على قيمنا ومعتقداتنا، وإدراك أهمية احترام الآخرين كخطوة أولى نحو التسامح</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 id="timeline2Title">المرحلة الثانية: فهم الآخر</h4>
+                        <p id="timeline2Desc">التعرف على ثقافات وأفكار الآخرين، وفهم وجهات نظرهم المختلفة دون أحكام مسبقة</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 id="timeline3Title">المرحلة الثالثة: الحوار البناء</h4>
+                        <p id="timeline3Desc">إجراء حوارات مفتوحة وصادقة مع الآخرين، والاستماع الفعّال لآرائهم وتجاربهم</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 id="timeline4Title">المرحلة الرابعة: التطبيق العملي</h4>
+                        <p id="timeline4Desc">ممارسة التسامح في حياتنا اليومية من خلال تصرفاتنا وقراراتنا، وأن نكون قدوة للآخرين</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4 id="timeline5Title">المرحلة الخامسة: النشر والتعميم</h4>
+                        <p id="timeline5Desc">مشاركة قيم التسامح مع المجتمع، والعمل على نشر ثقافة التسامح بين جميع فئات المجتمع</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-icon">"</div>
+                <p class="quote-text" id="quoteText">التسامح زينة الفضائل، وهو القوة الحقيقية التي تبني الأمم وتوحد الشعوب تحت راية المحبة والسلام</p>
+                <p class="quote-author" id="quoteAuthor">- حكمة إنسانية</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Project Info -->
+    <section>
+        <div class="container">
+            <div class="project-info">
+                <h2 class="section-title" id="projectSectionTitle">المشروع</h2>
+                <div class="project-badge" id="projectName">أنا مسامح</div>
+                <p class="subtitle" id="projectDesc">مشروع طلابي يهدف إلى نشر قيم التسامح والتعايش في المجتمع</p>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-label" id="studentLabel">الطالب</div>
+                        <div class="info-value" id="studentName">حسن حمزة الشخص</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-label" id="schoolLabel">المدرسة</div>
+                        <div class="info-value" id="schoolName">ثانوية الأمير عبدالمحسن</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="gold-line"></div>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <div class="contact-section">
+                <h2 class="section-title" id="contactTitle">تواصل معنا</h2>
+                <p class="subtitle" id="contactDesc">نسعد بتواصلكم واستفساراتكم</p>
+                <a href="mailto:7assan7amzah@gmail.com" class="email-link">
+                    <span>✉️</span>
+                    <span>7assan7amzah@gmail.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p id="footerText">© 2024 مشروع قيمنا حياة - التسامح يجمعنا - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const container = document.getElementById('particleContainer');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'gold-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        let isArabic = true;
+
+        const translations = {
+            ar: {
+                logoText: 'مشروع قيمنا حياة',
+                langBtn: 'English',
+                mainTopic: 'التسامح والتعايش',
+                projectTitle: 'مشروع قيمنا حياة',
+                subtitle: 'التسامح يجمعنا',
+                heroTitle: 'أنا مسامح',
+                heroDesc: 'رحلة نحو التسامح والتعايش السلمي',
+                stat1: 'الالتزام بالتسامح',
+                stat2: 'قيمة إنسانية',
+                stat3: 'مجتمع موحد',
+                stat4: 'دولة في العالم',
+                valuesTitle: 'قيم التسامح الأساسية',
+                value1Title: 'المحبة والإخاء',
+                value1Desc: 'نشر المحبة والود بين الناس وبناء علاقات إنسانية قوية تقوم على الاحترام المتبادل والتقدير، حيث يصبح المجتمع أسرة واحدة متماسكة',
+                value2Title: 'التعايش السلمي',
+                value2Desc: 'العيش المشترك باحترام وتقدير رغم الاختلافات الثقافية والدينية والفكرية، مع الحفاظ على الهوية والخصوصية لكل فرد في المجتمع',
+                value3Title: 'التواصل الحضاري',
+                value3Desc: 'التواصل الحضاري بين الثقافات والشعوب المختلفة لتبادل الخبرات والمعارف، وبناء جسور من التفاهم تعزز السلام العالمي',
+                value4Title: 'السلام والأمن',
+                value4Desc: 'بناء مجتمع سلمي متسامح يسوده الأمن والاستقرار، حيث يعيش الجميع في أمان وطمأنينة دون خوف أو قلق من التمييز',
+                detailTitle: 'ماهية التسامح',
+                info1Title: 'تعريف التسامح',
+                info1Text: 'التسامح هو قيمة إنسانية عظيمة تعني القدرة على قبول الآخرين واحترام اختلافاتهم، والتعامل معهم بروح من المحبة والعفو. إنه الأساس الذي يُبنى عليه المجتمع المتماسك والمتحضر.',
+                info1Item1: 'احترام حقوق الآخرين وكرامتهم الإنسانية',
+                info1Item2: 'قبول التنوع الثقافي والفكري',
+                info1Item3: 'نبذ العنف والتطرف بكافة أشكاله',
+                info1Item4: 'التعاون من أجل الصالح العام',
+                info2Title: 'أهمية التسامح',
+                info2Text: 'يشكل التسامح ركيزة أساسية في بناء المجتمعات الحديثة، فهو يعزز الاستقرار الاجتماعي ويقوي أواصر الترابط بين أفراد المجتمع، ويساهم في تحقيق التنمية الشاملة.',
+                info2Item1: 'تعزيز السلام الاجتماعي والاستقرار',
+                info2Item2: 'بناء جسور التواصل بين الثقافات',
+                info2Item3: 'تحقيق العدالة والمساواة',
+                info2Item4: 'دعم التنمية المستدامة',
+                info3Title: 'مظاهر التسامح',
+                info3Text: 'يتجلى التسامح في سلوكياتنا اليومية وتعاملاتنا مع الآخرين، من خلال احترام الرأي الآخر والعفو عند المقدرة، والتعاون على البر والخير.',
+                info3Item1: 'التعامل بالحسنى مع جميع الناس',
+                info3Item2: 'الإنصاف والعدل في التعامل',
+                info3Item3: 'الحوار البناء والنقاش الهادف',
+                info3Item4: 'العفو والصفح عن الأخطاء',
+                info4Title: 'ثمار التسامح',
+                info4Text: 'ينعكس التسامح إيجابياً على الفرد والمجتمع، حيث يخلق بيئة صحية للنمو والازدهار، ويساهم في تحقيق السعادة والرفاهية للجميع.',
+                info4Item1: 'مجتمع قوي متماسك',
+                info4Item2: 'علاقات إنسانية متينة',
+                info4Item3: 'تقدم وازدهار مستدام',
+                info4Item4: 'سلام نفسي وطمأنينة',
+                mapTitle: 'خريطة مفاهيم التسامح',
+                centralNode: 'أنا مسامح',
+                node1Title: 'سفراء حقوق الإنسان',
+                node1Desc: 'نؤمن بحقوق الإنسان الأساسية وكرامته، ونعمل على نشر ثقافة احترام الحقوق والحريات في المجتمع',
+                node2Title: 'التسامح يجمعنا',
+                node2Desc: 'التسامح هو الجسر الذي يوحد القلوب ويزيل الحواجز بين الناس، فبه نصنع مستقبلاً أفضل للأجيال القادمة',
+                node3Title: 'التواصل الحضاري',
+                node3Desc: 'جسور من التفاهم بين مختلف الحضارات والثقافات، نتعلم من بعضنا ونثري معارفنا الإنسانية',
+                node4Title: 'قبول الآخر',
+                node4Desc: 'احترام التنوع والاختلاف، والإيمان بأن الاختلاف رحمة وثراء للمجتمع الإنساني',
+                node5Title: 'العفو والتصالح',
+                node5Desc: 'القدرة على العفو والصفح، وتجاوز الخلافات لبناء علاقات قوية ومستدامة',
+                node6Title: 'التعددية الثقافية',
+                node6Desc: 'الاحتفاء بالتنوع الثقافي والاستفادة من مختلف الخبرات والتجارب الإنسانية',
+                timelineTitle: 'مراحل بناء التسامح',
+                timeline1Title: 'المرحلة الأولى: الوعي الذاتي',
+                timeline1Desc: 'فهم الذات والتعرف على قيمنا ومعتقداتنا، وإدراك أهمية احترام الآخرين كخطوة أولى نحو التسامح',
+                timeline2Title: 'المرحلة الثانية: فهم الآخر',
+                timeline2Desc: 'التعرف على ثقافات وأفكار الآخرين، وفهم وجهات نظرهم المختلفة دون أحكام مسبقة',
+                timeline3Title: 'المرحلة الثالثة: الحوار البناء',
+                timeline3Desc: 'إجراء حوارات مفتوحة وصادقة مع الآخرين، والاستماع الفعّال لآرائهم وتجاربهم',
+                timeline4Title: 'المرحلة الرابعة: التطبيق العملي',
+                timeline4Desc: 'ممارسة التسامح في حياتنا اليومية من خلال تصرفاتنا وقراراتنا، وأن نكون قدوة للآخرين',
+                timeline5Title: 'المرحلة الخامسة: النشر والتعميم',
+                timeline5Desc: 'مشاركة قيم التسامح مع المجتمع، والعمل على نشر ثقافة التسامح بين جميع فئات المجتمع',
+                quoteText: 'التسامح زينة الفضائل، وهو القوة الحقيقية التي تبني الأمم وتوحد الشعوب تحت راية المحبة والسلام',
+                quoteAuthor: '- حكمة إنسانية',
+                projectSectionTitle: 'المشروع',
+                projectName: 'أنا مسامح',
+                projectDesc: 'مشروع طلابي يهدف إلى نشر قيم التسامح والتعايش في المجتمع',
+                studentLabel: 'الطالب',
+                studentName: 'حسن حمزة الشخص',
+                schoolLabel: 'المدرسة',
+                schoolName: 'ثانوية الأمير عبدالمحسن',
+                contactTitle: 'تواصل معنا',
+                contactDesc: 'نسعد بتواصلكم واستفساراتكم',
+                footerText: '© 2024 مشروع قيمنا حياة - التسامح يجمعنا - جميع الحقوق محفوظة'
+            },
+            en: {
+                logoText: 'Our Values are Life Project',
+                langBtn: 'العربية',
+                mainTopic: 'Tolerance and Coexistence',
+                projectTitle: 'Our Values are Life Project',
+                subtitle: 'Tolerance Unites Us',
+                heroTitle: 'I am Tolerant',
+                heroDesc: 'A Journey Towards Tolerance and Peaceful Coexistence',
+                stat1: 'Commitment to Tolerance',
+                stat2: 'Human Value',
+                stat3: 'United Society',
+                stat4: 'Countries Worldwide',
+                valuesTitle: 'Core Values of Tolerance',
+                value1Title: 'Love and Brotherhood',
+                value1Desc: 'Spreading love and affection among people and building strong human relationships based on mutual respect and appreciation, making society one cohesive family',
+                value2Title: 'Peaceful Coexistence',
+                value2Desc: 'Living together with respect and appreciation despite cultural, religious and intellectual differences, while preserving the identity and privacy of each individual',
+                value3Title: 'Civilizational Communication',
+                value3Desc: 'Cultural communication between different cultures and peoples to exchange experiences and knowledge, building bridges of understanding that promote world peace',
+                value4Title: 'Peace and Security',
+                value4Desc: 'Building a peaceful, tolerant society with security and stability, where everyone lives in safety and peace without fear or concern of discrimination',
+                detailTitle: 'What is Tolerance',
+                info1Title: 'Definition of Tolerance',
+                info1Text: 'Tolerance is a great human value that means the ability to accept others and respect their differences, treating them with a spirit of love and forgiveness. It is the foundation on which a cohesive and civilized society is built.',
+                info1Item1: 'Respecting the rights and human dignity of others',
+                info1Item2: 'Accepting cultural and intellectual diversity',
+                info1Item3: 'Rejecting violence and extremism in all its forms',
+                info1Item4: 'Cooperation for the common good',
+                info2Title: 'Importance of Tolerance',
+                info2Text: 'Tolerance forms a fundamental pillar in building modern societies, as it enhances social stability and strengthens bonds between members of society, and contributes to achieving comprehensive development.',
+                info2Item1: 'Promoting social peace and stability',
+                info2Item2: 'Building bridges of communication between cultures',
+                info2Item3: 'Achieving justice and equality',
+                info2Item4: 'Supporting sustainable development',
+                info3Title: 'Manifestations of Tolerance',
+                info3Text: 'Tolerance is manifested in our daily behaviors and dealings with others, through respecting other opinions, forgiving when able, and cooperating for goodness.',
+                info3Item1: 'Treating all people with kindness',
+                info3Item2: 'Fairness and justice in dealing',
+                info3Item3: 'Constructive dialogue and meaningful discussion',
+                info3Item4: 'Forgiving and pardoning mistakes',
+                info4Title: 'Fruits of Tolerance',
+                info4Text: 'Tolerance reflects positively on the individual and society, creating a healthy environment for growth and prosperity, and contributing to achieving happiness and well-being for all.',
+                info4Item1: 'A strong, cohesive society',
+                info4Item2: 'Strong human relationships',
+                info4Item3: 'Sustainable progress and prosperity',
+                info4Item4: 'Inner peace and tranquility',
+                mapTitle: 'Tolerance Concept Map',
+                centralNode: 'I am Tolerant',
+                node1Title: 'Human Rights Ambassadors',
+                node1Desc: 'We believe in fundamental human rights and dignity, and work to spread a culture of respect for rights and freedoms in society',
+                node2Title: 'Tolerance Unites Us',
+                node2Desc: 'Tolerance is the bridge that unites hearts and removes barriers between people, with it we create a better future for generations to come',
+                node3Title: 'Civilizational Communication',
+                node3Desc: 'Bridges of understanding between different civilizations and cultures, we learn from each other and enrich our human knowledge',
+                node4Title: 'Accepting Others',
+                node4Desc: 'Respecting diversity and difference, believing that difference is a mercy and richness for human society',
+                node5Title: 'Forgiveness and Reconciliation',
+                node5Desc: 'The ability to forgive and pardon, overcoming differences to build strong and sustainable relationships',
+                node6Title: 'Cultural Pluralism',
+                node6Desc: 'Celebrating cultural diversity and benefiting from various human experiences and experiments',
+                timelineTitle: 'Stages of Building Tolerance',
+                timeline1Title: 'Stage One: Self-Awareness',
+                timeline1Desc: 'Understanding ourselves and recognizing our values and beliefs, realizing the importance of respecting others as a first step towards tolerance',
+                timeline2Title: 'Stage Two: Understanding Others',
+                timeline2Desc: 'Learning about the cultures and ideas of others, understanding their different perspectives without prejudice',
+                timeline3Title: 'Stage Three: Constructive Dialogue',
+                timeline3Desc: 'Conducting open and honest dialogues with others, actively listening to their opinions and experiences',
+                timeline4Title: 'Stage Four: Practical Application',
+                timeline4Desc: 'Practicing tolerance in our daily lives through our actions and decisions, being role models for others',
+                timeline5Title: 'Stage Five: Spreading and Dissemination',
+                timeline5Desc: 'Sharing tolerance values with society, working to spread a culture of tolerance among all segments of society',
+                quoteText: 'Tolerance is the ornament of virtues, it is the true strength that builds nations and unites peoples under the banner of love and peace',
+                quoteAuthor: '- Human Wisdom',
+                projectSectionTitle: 'The Project',
+                projectName: 'I am Tolerant',
+                projectDesc: 'A student project aimed at spreading the values of tolerance and coexistence in society',
+                studentLabel: 'Student',
+                studentName: 'Hassan Hamzah Alshakhs',
+                schoolLabel: 'School',
+                schoolName: 'Prince Abdulmohsen Secondary School',
+                contactTitle: 'Contact Us',
+                contactDesc: 'We are happy to hear from you',
+                footerText: '© 2024 Our Values are Life Project - Tolerance Unites Us - All Rights Reserved'
+            }
+        };
+
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const lang = isArabic ? 'ar' : 'en';
+            
+            document.body.className = lang === 'en' ? 'en' : '';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            for (let key in translations[lang]) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = translations[lang][key];
+                }
+            }
+        }
+    </script>
+</body>
+</html>
